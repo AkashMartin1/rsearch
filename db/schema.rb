@@ -11,21 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160201061425) do
+ActiveRecord::Schema.define(version: 20160201101314) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "domain_urls", force: :cascade do |t|
     t.integer  "domain_id"
     t.text     "url"
     t.boolean  "blocked"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "date_and_time_i"
+    t.boolean  "valid_url",       default: true
   end
+
+  add_index "domain_urls", ["date_and_time_i"], name: "index_domain_urls_on_date_and_time_i", using: :btree
+  add_index "domain_urls", ["url", "domain_id"], name: "index_domain_urls_on_url_and_domain_id", unique: true, using: :btree
 
   create_table "domains", force: :cascade do |t|
     t.string   "name"
     t.boolean  "blocked",    default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  add_index "domains", ["name"], name: "index_domains_on_name", unique: true, using: :btree
+
+  create_table "web_contents", force: :cascade do |t|
+    t.text     "data"
+    t.integer  "domain_url_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
