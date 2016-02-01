@@ -49,3 +49,6 @@ end
 gem 'nokogiri'
 gem 'colorize'
 gem 'pg'
+gem 'open_uri_redirections'
+gem 'slim-rails'
+gem 'sunspot_rails'
