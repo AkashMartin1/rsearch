@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Index:
+  = @setting.index
+p
+  strong Status:
+  = @setting.status
+
+= link_to 'Edit', edit_setting_path(@setting)
+'|
+= link_to 'Back', settings_path
