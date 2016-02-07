@@ -14,7 +14,7 @@ namespace :rcron do
   end
 
   task seed: :environment do
-      AddressDatum.new.seed
+      AddressData.new.seed
   end
 
 end
