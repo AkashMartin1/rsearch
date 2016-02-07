@@ -7,9 +7,9 @@ class MyTask
     def main(url='https://en.wikipedia.org/wiki/Main_Page', link_id=nil)
       puts url.colorize(:green)
       Rails.logger.level = Logger::DEBUG
-      doc        = open(url, :allow_redirections => :safe).read
+      doc                = open(url, :allow_redirections => :safe).read
       if link_id != nil
-        web_content = WebContent.new(domain_url_id: link_id)
+        web_content      = WebContent.new(domain_url_id: link_id)
         web_content.data = doc
         web_content.save
       end
