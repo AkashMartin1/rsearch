@@ -13,4 +13,8 @@ namespace :rcron do
     MyTask.url_fetch
   end
 
+  task seed: :environment do
+      AddressDatum.new.seed
+  end
+
 end
