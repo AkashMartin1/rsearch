@@ -4,7 +4,7 @@ development:
   database: rsearch
   username: admin
   password: admin
-  host: 192.168.0.102
+  host: localhost
   port: 5432
   pool: 500
 
@@ -14,6 +14,6 @@ production:
   database: rsearch
   username: admin
   password: admin
-  host: 192.168.0.102
+  host: localhost
   port: 5432
   pool: 500
