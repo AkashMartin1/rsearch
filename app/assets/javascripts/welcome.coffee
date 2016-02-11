@@ -1,11 +1,11 @@
 class Resizable
   constructor: ->
     window.self = this
-    table = $(document).find('table.resizable')
+    window.table = $(document).find('table.resizable')
     pre_element = '<div class="main-resizable">'
     $.each table.find('thead').find('tr').find('td'), (index, e)->
-      pre_element += "<div class=\"resizable\" style=\"width: 100px; height: 10px; margin-left: 2px\"></div>"
-    pre_element += '<div>'
+      pre_element += "<div class=\"resizable\" style=\"width: 100px; height: 40px; margin-left: 20px\"></div>"
+    pre_element += '<div><br />'
     console.log pre_element
     table.before(pre_element)
     this.active_div()
@@ -13,7 +13,8 @@ class Resizable
   doDrag: (e) ->
     if $(this).hasClass('active')
       $(this).css 'width', "#{(window.startWidth + e.clientX - window.startX)}px"
-      $(this).css 'height', "#{(window.startHeight + e.clientY - window.startY)}px"
+      window.self.table_reset_col()
+    #   $(this).css 'height', "#{(window.startHeight + e.clientY - window.startY)}px"
 
   stopDrag: (e) ->
     $(document).off('mousemove', 'div.resizable', this.doDrag)
@@ -37,6 +38,9 @@ class Resizable
       console.log window.startHeight
       $(document).on('mousemove', 'div.resizable', window.self.doDrag)
       $(document).on('mouseup', 'div.resizable', window.self.stopDrag)
+   table_reset_col: ->
+     $.each window.table.find('tr:first').find('td'), (index, el)->
+       $(el).css 'width', $(document).find("div.resizable:eq(#{index})").width()+'px'
 
 $ ->
   new Resizable()
