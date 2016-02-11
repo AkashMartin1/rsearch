@@ -31,7 +31,9 @@ class Resizable
       window.startHeight = parseInt($(this).parent().height())
       $(document).on('mousemove', window.self.doDrag)
       $(document).on('mouseup', window.self.stopDrag)
+
    table_reset_col: ->
+     $(document).find('table.resizable').css 'width', $(document).find('main-resizable').width()+"px"  
      $.each window.table.find('tr:first').find('td'), (index, el)->
        $(el).css 'width', $(document).find("div.resizable:eq(#{index})").width()+'px'
        $(el).css 'height', $(document).find("div.resizable:eq(#{index})").height()+'px'

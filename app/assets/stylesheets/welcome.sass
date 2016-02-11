@@ -1,13 +1,14 @@
 div.main-resizable
   clear: both
-  width: 100%
   position: absolute
+  display: inline-flex
   div.resizable
     border: medium
     position: relative
     background-color: #CACECF
     float: left
     opacity: 0.5
+    display: inline-block
   div.resizable-handler
     width: 5px
     padding: 15px
@@ -19,5 +20,6 @@ div.main-resizable
     margin-left: 50px
 
 table.resizable
+  width: auto
   td
     border: 1px solid
