@@ -7,23 +7,11 @@ br
 table.resizable style="clear: both"
   thead
     tr
-      td hello
-      td world
-      td world
-      td world
-      td world
-      td world
-      td world
-      td world
-      td Hi
+      - columns = AddressData.column_names
+      - columns.each do |name|
+        td = name
   tbody
-    tr
-      td Hi
-      td hiiiiiiii
-      td Hi
-      td Hi
-      td Hi
-      td Hi
-      td Hi
-      td Hi
-      td Hi
+    - @address_data.each do |ad|
+      tr
+        - columns.each do |name|
+          td = ad[name]
