@@ -33,10 +33,10 @@ class Resizable
       $(document).on('mouseup', window.self.stopDrag)
 
    table_reset_col: ->
-     $(document).find('table.resizable').css 'width', $(document).find('main-resizable').width()+"px"  
+     $(document).find('table.resizable').attr 'width', $(document).find('div.main-resizable').width()+"px"
      $.each window.table.find('tr:first').find('td'), (index, el)->
-       $(el).css 'width', $(document).find("div.resizable:eq(#{index})").width()+'px'
-       $(el).css 'height', $(document).find("div.resizable:eq(#{index})").height()+'px'
+       $(el).css 'width', $(document).find("div.resizable:eq(#{index})").outerWidth()+'px'
+    #    $(el).css 'height', $(document).find("div.resizable:eq(#{index})").height()+'px'
 
    reset_active: ->
        # TODO:
